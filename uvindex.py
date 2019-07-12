@@ -21,13 +21,14 @@ zipcode = input()
 
 weather_link = 'https://weather.com/weather/today/l/' + zipcode + ':4:US'
 
+os.system('clear')
+
 try:
     response = requests.get(weather_link)
     soup = BeautifulSoup(response.text, 'html.parser')
     spans = soup.find('div', {'class' : 'today_nowcard-hilo'})
     location = soup.find('h1', {'class' : 'h4 today_nowcard-location'})
 
-    print('\n')
     print('*****')
     print('Location: ' + location.text)
 
